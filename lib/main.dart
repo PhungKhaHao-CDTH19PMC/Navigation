@@ -149,30 +149,309 @@ class TodosScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget checkboxWidget = Checkkbox(title: "title");
+    Widget deletebuttonWidget = DeleteButton(title: "title");
+    Widget numberWidget = Number(title: "title");
     return Scaffold(
       appBar: AppBar(
         title: const Text('MailBoxes'),
         backgroundColor: Colors.grey,
       ),
-      body: ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(todos[index].title),
-            // When a user taps the ListTile, navigate to the DetailScreen.
-            // Notice that you're not only creating a DetailScreen, you're
-            // also passing the current todo through to it.
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailScreen(todo: todos[index]),
+      body: ListView(
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 18, 0, 0),
+            height: 50,
+            color: Colors.grey[400],
+            child: Text('MailBoxes'),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.email),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'All Inboxes',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              );
-            },
-          );
-        },
+                numberWidget,
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.cloud),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'iCloud',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                numberWidget,
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.email),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'Gmail',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                numberWidget,
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.email),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'Hotmail',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                numberWidget,
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.mail_rounded),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'VIP',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                numberWidget,
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 18, 0, 0),
+            height: 50,
+            color: Colors.grey[400],
+            child: Text('Special folder'),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.security_outlined),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'Secure',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                numberWidget,
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                checkboxWidget,
+                Icon(Icons.notifications_active),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*2*/
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: const Text(
+                          'Notifications',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                numberWidget,
+              ],
+            ),
+          ),
+          deletebuttonWidget,
+        ],
       ),
+    );
+  }
+}
+
+class Checkkbox extends StatefulWidget {
+  const Checkkbox({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  @override
+  State<Checkkbox> createState() => _Checkkbox();
+}
+
+class _Checkkbox extends State<Checkkbox> {
+  bool isChecked = false;
+  int _count = 41;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+            value: isChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isChecked = value!;
+              });
+            }),
+      ],
+    );
+  }
+}
+
+class DeleteButton extends StatefulWidget {
+  const DeleteButton({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  @override
+  State<DeleteButton> createState() => _DeleteButton();
+}
+
+class _DeleteButton extends State<DeleteButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(top: 274),
+      child: Center(
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          child: RaisedButton(
+            onPressed: () {},
+            color: Theme.of(context).accentColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'DELETE',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+                Icon(
+                  Icons.delete_outline_rounded,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Number extends StatefulWidget {
+  const Number({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  @override
+  State<Number> createState() => _Number();
+}
+
+class _Number extends State<Number> {
+  int number = 99;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(right: 20),
+      child: Text(number.toString()),
     );
   }
 }
