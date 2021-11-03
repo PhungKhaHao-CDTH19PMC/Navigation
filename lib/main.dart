@@ -8,15 +8,16 @@ void main() {
     home: FirstRoute(),
   ));
 }
+
 class Todo {
   final int a;
   final String title;
   final String description;
-  const Todo(this.a,this.title, this.description);
+  const Todo(this.a, this.title, this.description);
 }
 
-TextEditingController num1= new TextEditingController();
-TextEditingController num2= new TextEditingController();
+TextEditingController num1 = new TextEditingController();
+TextEditingController num2 = new TextEditingController();
 
 class FirstRoute extends StatefulWidget {
   const FirstRoute({Key? key}) : super(key: key);
@@ -26,38 +27,37 @@ class FirstRoute extends StatefulWidget {
 }
 
 class _FirstRouteState extends State<FirstRoute> {
-  TextEditingController num1= new TextEditingController();
-  TextEditingController num2= new TextEditingController();
-  String result='';
+  TextEditingController num1 = new TextEditingController();
+  TextEditingController num2 = new TextEditingController();
+  String result = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[200],
       body: Center(
-        child: 
-        Column(
+        child: Column(
           children: [
-              Icon(
-                Icons.email_sharp,
-                color: Colors.pink,
-                size: 150,
+            Icon(
+              Icons.email_sharp,
+              color: Colors.pink,
+              size: 150,
+            ),
+            const Text(
+              'SignIn',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 70,
               ),
-              const Text(
-                'SignIn',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 70,
-                ),
+            ),
+            const Text(
+              'Speak, friend, and enter',
+              style: TextStyle(
+                color: Colors.black,
               ),
-              const Text(
-                'Speak, friend, and enter',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              Container(
+            ),
+            Container(
               padding: const EdgeInsets.fromLTRB(32, 60, 32, 20),
-              child:  TextField(
+              child: TextField(
                 controller: num1,
                 style: TextStyle(color: Colors.grey),
                 textAlign: TextAlign.center,
@@ -67,12 +67,11 @@ class _FirstRouteState extends State<FirstRoute> {
                   filled: true,
                   fillColor: Colors.white,
                 ),
-                
               ),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(32, 0, 32, 80),
-              child:  TextField(
+              child: TextField(
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey),
                 decoration: InputDecoration(
@@ -84,47 +83,46 @@ class _FirstRouteState extends State<FirstRoute> {
                 controller: num2,
               ),
             ),
-
             SizedBox(
-            width: 430.0,
-            height: 50.0,
-            child: OutlinedButton(
-              onPressed: (){
-                if(num1.text==''||num2.text=='')
-                {
-                  result="Vui lòng nhập đầy đủ thông tin";
-                }
-                else if(num1.text!=num2.text)
-                {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => const ThirtRoute()));
-                }
-                else
-                {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => const SplashScreen()));
-                }
-                setState(() {
-                  
-                });
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+              width: 430.0,
+              height: 50.0,
+              child: OutlinedButton(
+                onPressed: () {
+                  if (num1.text == '' || num2.text == '') {
+                    result = "Vui lòng nhập đầy đủ thông tin";
+                  } else if (num1.text != num2.text) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ThirtRoute()));
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SplashScreen()));
+                  }
+                  setState(() {});
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                child: const Text(
+                  'SIGN IN',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-              child: const Text('SIGN IN', style: TextStyle(color: Colors.white),),
-            ),
             ),
             Container(
-              padding: EdgeInsets.only(top:10),
+              padding: EdgeInsets.only(top: 10),
               child: Text(result),
             )
-            
           ],
         ),
-
       ),
     );
   }
 }
-  
 
 class SecondRoute extends StatelessWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -132,17 +130,15 @@ class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TodosScreen(
-        todos: List.generate(
-          
+        body: TodosScreen(
+      todos: List.generate(
           5,
           (i) => Todo(
-            i,
-            'Todo $i',
-            'A description of what needs to be done for Todo $i',)
-            ),
-      )
-    );
+                i,
+                'Todo $i',
+                'A description of what needs to be done for Todo $i',
+              )),
+    ));
   }
 }
 
@@ -155,13 +151,13 @@ class TodosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todos'),
+        title: const Text('MailBoxes'),
+        backgroundColor: Colors.grey,
       ),
       body: ListView.builder(
         itemCount: todos.length,
         itemBuilder: (context, index) {
           return ListTile(
-            
             title: Text(todos[index].title),
             // When a user taps the ListTile, navigate to the DetailScreen.
             // Notice that you're not only creating a DetailScreen, you're
@@ -208,6 +204,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 }
+
 class ThirtRoute extends StatelessWidget {
   const ThirtRoute({Key? key}) : super(key: key);
 
@@ -215,92 +212,106 @@ class ThirtRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: 
-        Column(
+        child: Column(
           children: [
-              Icon(
-                Icons.email_sharp,
-                color: Colors.pink,
-                size: 150,
-              ),
-              const Text(
-                "UPS...countn' sign in",
-                style: TextStyle(
-                  fontWeight:FontWeight.bold,
-                ),
-              ),
-              const Text(
-                'Your username and password do not match',
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-              const Text(
-                'Please try again',
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(32, 100, 32, 32),
-                child: 
-                SizedBox(
-            width: 430.0,
-            height: 50.0,
-            child: OutlinedButton(
-              onPressed: (){
-                Navigator.pop(context);
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-              ),
-              child: const Text('TRY AGAIN', style: TextStyle(color: Colors.white),),
+            Icon(
+              Icons.email_sharp,
+              color: Colors.pink,
+              size: 150,
             ),
+            const Text(
+              "UPS...countn' sign in",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-                
-              )
+            const Text(
+              'Your username and password do not match',
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+            const Text(
+              'Please try again',
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(32, 100, 32, 32),
+              child: SizedBox(
+                width: 430.0,
+                height: 50.0,
+                child: OutlinedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                  ),
+                  child: const Text(
+                    'TRY AGAIN',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
-
       ),
     );
   }
 }
 
-
-class SplashScreen extends StatefulWidget{
-  const SplashScreen({Key? key}): super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
   @override
-  _SplashScreenState createState()=> _SplashScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>{
+class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), (){
-      Navigator.push(context,MaterialPageRoute(builder: (context) => const SecondRoute()));
+    Timer(Duration(seconds: 3), () {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const SecondRoute()));
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-        child: Column(
-          children: [
-            Icon(
-            Icons.email,
-            size: 200 ,
+        backgroundColor: Colors.blue[200],
+        body: Center(
+          child: Column(
+            children: [
+              Icon(
+                Icons.email,
+                size: 200,
+              ),
+              const Text(
+                'SignIn',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 70,
+                ),
+              ),
+              const Text(
+                'Speak, friend, and enter',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 200),
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(Colors.white),
+                ),
+              ),
+            ],
           ),
-          CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(Colors.white),
-          )
-          ],
-        ),
-
-        )
-    );
+        ));
   }
 }
