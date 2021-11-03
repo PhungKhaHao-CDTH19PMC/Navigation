@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -98,7 +100,7 @@ class _FirstRouteState extends State<FirstRoute> {
                 }
                 else
                 {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => const SecondRoute()));
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => const SplashScreen()));
                 }
                 setState(() {
                   
@@ -261,6 +263,44 @@ class ThirtRoute extends StatelessWidget {
         ),
 
       ),
+    );
+  }
+}
+
+
+class SplashScreen extends StatefulWidget{
+  const SplashScreen({Key? key}): super(key: key);
+  @override
+  _SplashScreenState createState()=> _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen>{
+  @override
+  void initState()
+  {
+    super.initState();
+    Timer(Duration(seconds: 3), (){
+      Navigator.push(context,MaterialPageRoute(builder: (context) => const SecondRoute()));
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.green,
+      body: Center(
+        child: Column(
+          children: [
+            Icon(
+            Icons.email,
+            size: 200 ,
+          ),
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation(Colors.white),
+          )
+          ],
+        ),
+
+        )
     );
   }
 }
