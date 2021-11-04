@@ -154,8 +154,35 @@ class TodosScreen extends StatelessWidget {
     Widget numberWidget = Number(title: "title");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MailBoxes'),
+        title: const Text(
+          'MailBoxes',
+        ),
         backgroundColor: Colors.grey,
+        leading: Navigator.canPop(context)
+            ? IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.grey),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FirstRoute()));
+                },
+              )
+            : null,
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.all(16.0),
+              primary: Colors.blue,
+              textStyle: const TextStyle(fontSize: 15),
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const FirstRoute()));
+            },
+            child: const Text('Done'),
+          ),
+        ],
       ),
       body: ListView(
         children: <Widget>[
@@ -377,7 +404,6 @@ class Checkkbox extends StatefulWidget {
 
 class _Checkkbox extends State<Checkkbox> {
   bool isChecked = false;
-  int _count = 41;
   @override
   Widget build(BuildContext context) {
     return Row(
