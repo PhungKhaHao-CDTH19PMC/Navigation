@@ -432,7 +432,7 @@ class _DeleteButton extends State<DeleteButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 274),
+      padding: const EdgeInsets.only(top: 295),
       child: Center(
         child: Container(
           width: double.infinity,
