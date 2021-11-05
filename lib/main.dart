@@ -142,16 +142,32 @@ class SecondRoute extends StatelessWidget {
   }
 }
 
-class TodosScreen extends StatelessWidget {
+class TodosScreen extends StatefulWidget {
   const TodosScreen({Key? key, required this.todos}) : super(key: key);
 
   final List<Todo> todos;
 
   @override
+  _EmailScreen createState() => _EmailScreen();
+}
+
+class _EmailScreen extends State<TodosScreen> {
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+  bool isChecked4 = false;
+  bool isChecked5 = false;
+  bool isChecked6 = false;
+  bool isChecked7 = false;
+  int number1 = 99;
+  int number2 = 99;
+  int number3 = 99;
+  int number4 = 99;
+  int number5 = 99;
+  int number6 = 99;
+  int number7 = 99;
+
   Widget build(BuildContext context) {
-    Widget checkboxWidget = Checkkbox(title: "title");
-    Widget deletebuttonWidget = DeleteButton(title: "title");
-    Widget numberWidget = Number(title: "title");
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -196,7 +212,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked1,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked1 = value!;
+                      });
+                    }),
                 Icon(Icons.email),
                 Expanded(
                   child: Row(
@@ -215,7 +237,10 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number1.toString()),
+                ),
               ],
             ),
           ),
@@ -223,7 +248,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked2,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked2 = value!;
+                      });
+                    }),
                 Icon(Icons.cloud),
                 Expanded(
                   child: Row(
@@ -242,7 +273,10 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number2.toString()),
+                ),
               ],
             ),
           ),
@@ -250,7 +284,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked3,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked3 = value!;
+                      });
+                    }),
                 Icon(Icons.email),
                 Expanded(
                   child: Row(
@@ -269,7 +309,10 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number3.toString()),
+                ),
               ],
             ),
           ),
@@ -277,7 +320,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked4,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked4 = value!;
+                      });
+                    }),
                 Icon(Icons.email),
                 Expanded(
                   child: Row(
@@ -296,7 +345,10 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number4.toString()),
+                ),
               ],
             ),
           ),
@@ -304,7 +356,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked5,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked5 = value!;
+                      });
+                    }),
                 Icon(Icons.mail_rounded),
                 Expanded(
                   child: Row(
@@ -323,7 +381,10 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number5.toString()),
+                ),
               ],
             ),
           ),
@@ -337,7 +398,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked6,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked6 = value!;
+                      });
+                    }),
                 Icon(Icons.security_outlined),
                 Expanded(
                   child: Row(
@@ -356,7 +423,10 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number6.toString()),
+                ),
               ],
             ),
           ),
@@ -364,7 +434,13 @@ class TodosScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                checkboxWidget,
+                Checkbox(
+                    value: isChecked7,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked7 = value!;
+                      });
+                    }),
                 Icon(Icons.notifications_active),
                 Expanded(
                   child: Row(
@@ -383,101 +459,67 @@ class TodosScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                numberWidget,
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(number7.toString()),
+                ),
               ],
             ),
           ),
-          deletebuttonWidget,
-        ],
-      ),
-    );
-  }
-}
-
-class Checkkbox extends StatefulWidget {
-  const Checkkbox({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<Checkkbox> createState() => _Checkkbox();
-}
-
-class _Checkkbox extends State<Checkkbox> {
-  bool isChecked = false;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Checkbox(
-            value: isChecked,
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value!;
-              });
-            }),
-      ],
-    );
-  }
-}
-
-class DeleteButton extends StatefulWidget {
-  const DeleteButton({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<DeleteButton> createState() => _DeleteButton();
-}
-
-class _DeleteButton extends State<DeleteButton> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 295),
-      child: Center(
-        child: Container(
-          width: double.infinity,
-          height: 50,
-          child: RaisedButton(
-            onPressed: () {},
-            color: Theme.of(context).accentColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  'DELETE',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
+          Container(
+            padding: const EdgeInsets.only(top: 295),
+            child: Center(
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                child: RaisedButton(
+                  onPressed: () {
+                    if (isChecked1 == true) {
+                      number1 = 0;
+                    }
+                    if (isChecked2 == true) {
+                      number2 = 0;
+                    }
+                    if (isChecked3 == true) {
+                      number3 = 0;
+                    }
+                    if (isChecked4 == true) {
+                      number4 = 0;
+                    }
+                    if (isChecked5 == true) {
+                      number5 = 0;
+                    }
+                    if (isChecked6 == true) {
+                      number6 = 0;
+                    }
+                    if (isChecked7 == true) {
+                      number7 = 0;
+                    }
+                    setState(() {});
+                  },
+                  color: Theme.of(context).accentColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'DELETE',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Icon(
+                        Icons.delete_outline_rounded,
+                      )
+                    ],
                   ),
                 ),
-                Icon(
-                  Icons.delete_outline_rounded,
-                )
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
-    );
-  }
-}
-
-class Number extends StatefulWidget {
-  const Number({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<Number> createState() => _Number();
-}
-
-class _Number extends State<Number> {
-  int number = 99;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(right: 20),
-      child: Text(number.toString()),
     );
   }
 }
