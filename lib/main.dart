@@ -129,23 +129,12 @@ class SecondRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: TodosScreen(
-      todos: List.generate(
-          5,
-          (i) => Todo(
-                i,
-                'Todo $i',
-                'A description of what needs to be done for Todo $i',
-              )),
-    ));
+    return Scaffold(body: TodosScreen());
   }
 }
 
 class TodosScreen extends StatefulWidget {
-  const TodosScreen({Key? key, required this.todos}) : super(key: key);
-
-  final List<Todo> todos;
+  const TodosScreen({Key? key}) : super(key: key);
 
   @override
   _EmailScreen createState() => _EmailScreen();
